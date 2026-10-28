@@ -23,6 +23,7 @@ js/
   views.js            the HTML for each window
   window-manager.js   opening, closing, focusing and stacking windows
   boot.js             the loading screen that writes "radhika"
+  cursors.js          the two cursors that set up the desktop after it
   desktop.js          desktop folders, phone home screen, clock
   state.js            what's selected right now
   utils.js            small shared helpers
