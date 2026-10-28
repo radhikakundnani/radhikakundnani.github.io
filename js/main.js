@@ -6,7 +6,6 @@ import { WINS } from './views.js';
 import { layer, open, refresh, focusWin, openWin, closeWin, topOpen, openProject } from './window-manager.js';
 import { renderFolders, tick } from './desktop.js';
 import { playBoot } from './boot.js';
-import { playCursorIntro } from './cursors.js';
 
 /* ---------- clicks ---------- */
 document.addEventListener('click', (e) => {
@@ -103,10 +102,7 @@ function showDesktop() {
 
 // The loading screen plays once per visit, and never on phones.
 if (booted || isPhone()) { $('#boot')?.classList.add('skip'); showDesktop(); }
-else playBoot(() => {
-  showDesktop();
-  if (!reduced && !fromHash) setTimeout(playCursorIntro, 450);  // after the window pops in
-});
+else playBoot(showDesktop);
 
 // Keep windows on screen when the browser is resized.
 window.addEventListener('resize', () => {
