@@ -101,11 +101,14 @@
   const ext = 'target="_blank" rel="noopener"';
 
   const FOLDER_SVG = '<svg width="72" height="58" viewBox="0 0 72 58" aria-hidden="true"><defs><linearGradient id="fgF" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#7FC6FB"/><stop offset="1" stop-color="#69B6F2"/></linearGradient></defs><path d="M6 10a4 4 0 0 1 4-4h14.3a4 4 0 0 1 2.9 1.25L30 10.2h32a4 4 0 0 1 4 4V22H6z" fill="#5CADEE"/><rect x="6" y="13.5" width="60" height="39.5" rx="4" fill="url(#fgF)"/><path d="M10 14.25h52a3.25 3.25 0 0 1 3.25 3.25M6.75 17.5A3.25 3.25 0 0 1 10 14.25" fill="none" stroke="#B4E0FF" stroke-width="1.2" stroke-linecap="round" opacity=".9"/><path d="M8.5 46.5h55" stroke="#5DA9E6" stroke-width="1" opacity=".55"/></svg>';
-  const X = '<svg viewBox="0 0 8 8"><path d="M1.5 1.5l5 5M6.5 1.5l-5 5" stroke="#000" stroke-width="1.2" stroke-linecap="round"/></svg>';
-  const MIN = '<svg viewBox="0 0 8 8"><path d="M1.5 4h5" stroke="#000" stroke-width="1.2" stroke-linecap="round"/></svg>';
-  const ZOOM = '<svg viewBox="0 0 8 8"><path d="M2 6V2h4M6 2v4H2" stroke="#000" stroke-width="1.1" fill="none" stroke-linecap="round"/></svg>';
+  const X = '<svg viewBox="0 0 10 10"><path d="M2.6 2.6l4.8 4.8M7.4 2.6L2.6 7.4" stroke="#7A0B04" stroke-width="1.5" stroke-linecap="round"/></svg>';
+  const MIN = '<svg viewBox="0 0 10 10"><path d="M2.2 5h5.6" stroke="#8A5000" stroke-width="1.6" stroke-linecap="round"/></svg>';
+  const ZOOM = '<svg viewBox="0 0 10 10"><path d="M2.4 3.9v3.7h3.7z" fill="#0B5E0F"/><path d="M7.6 6.1V2.4H3.9z" fill="#0B5E0F"/></svg>';
 
   /* ---------------- window definitions ---------------- */
+  let usingKeys = false;
+  document.addEventListener('keydown', () => { usingKeys = true; document.documentElement.classList.add('kb'); }, true);
+  document.addEventListener('pointerdown', () => { usingKeys = false; document.documentElement.classList.remove('kb'); }, true);
   const state = { filter: 'all', proj: 'gravitas', shot: 0, cat: 0 };
 
   const WINS = {
@@ -314,7 +317,7 @@
     open.set(id, el);
     focusWin(id);
     const first = el.querySelector('.pane button, .pane a, .dot.r');
-    if (first && !isPhone()) first.focus({ preventScroll: true });
+    if (first && !isPhone()) first.focus({ preventScroll: true, focusVisible: usingKeys });
   }
 
   function closeWin(id) {
