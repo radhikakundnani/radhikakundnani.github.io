@@ -7,6 +7,28 @@
   const FIGMA = (k) => 'https://www.figma.com/design/' + k;
 
   const PROJECTS = [
+    { id: 'bagsy', file: 'Bagsy', title: 'Bagsy', kind: 'Full-stack web app', year: 'live', tags: ['code', 'design', 'product'],
+      imgs: ['bagsy_hero.jpg', 'bagsy_list.jpg'],
+      links: [{ label: 'Open Bagsy', href: 'https://bagsy-pi.vercel.app/' }, { label: 'GitHub', href: 'https://github.com/radhikakundnani/bagsy' }],
+      blurb: 'A trip planner for people who overpack. Bagsy builds your packing list from the weather on your actual dates, sorts anything you type with a small model trained on 466 items, and keeps your whole crew on one list.',
+      did: ['Designed and built it end to end; live on Vercel', 'Weather-based lists, an item classifier, shared crew lists and an inspo board', 'A 30-second packing mini game, because why not'], tools: ['React', 'Node', 'MongoDB', 'ML'] },
+    { id: 'leadsquared', file: 'LeadSquared', title: 'Test & Explain', kind: 'Product case study', year: '2026', tags: ['product', 'design'],
+      imgs: ['lsq.jpg'], figma: 'k42HtMCC4kBTB9epy9GLn2',
+      links: [{ label: 'Case study', href: 'https://app.notion.com/p/Fewer-Tickets-Faster-Go-Live-Making-LeadSquared-Automations-Self-Serve-3f30c702a953818a93c2ea50172f151e' }],
+      blurb: 'Why do LeadSquared customers keep filing tickets about automations? 50% of reviewers blamed setup and only 22% blamed support, so I designed a check that runs before an automation goes live.',
+      did: ['Read 18 reviews and scored 6 ideas with RICE', 'Wrote the PRD: personas, 7 user stories, success metrics', 'Wireframed impact preview, risk warnings and test runs; caught a workload risk and added round-robin'], tools: ['PRD', 'RICE', 'Figma'] },
+    { id: 'devjams25', file: 'DevJams 25', title: "DevJams'25", kind: 'Hackathon website + portal', year: '2025', tags: ['design', 'product'],
+      imgs: ['dj25_hero.jpg', 'dj25_tracks.jpg', 'dj25_all.jpg'], teamFigma: 'AifNs025vrTd15Qf8MVuBv',
+      blurb: 'The website and participant portal for our flagship hackathon: log in, onboard, create or join a team, pick a track, submit your idea. A black grid in an electric-blue frame, with a pile of stickers that makes forms feel like a party.',
+      did: ['Designed the site and the full participant flow: login, onboarding, teams, dashboard, idea submission', 'A sticker set (LETS HACK, the DJ badge, the dino) reused across every screen'], tools: ['Figma', 'user flows', 'stickers'] },
+    { id: 'devjams24', file: 'DevJams 24', title: "DevJams'24", kind: 'Hackathon website', year: '2024', tags: ['design'],
+      imgs: ['dj24_center.jpg'], teamFigma: 'lFDcEKdRCs8thOWBh41YOs',
+      blurb: "The hero is the Chrome dino game ('press space to play!'), with a pixel countdown, dino FAQs and a full timeline.",
+      did: ['Branding and website for the hackathon', 'Dino easter eggs and game states', 'Timeline, tracks, sponsors and FAQ sections'], tools: ['Figma', 'branding'] },
+    { id: 'riviera', file: 'Riviera 25', title: "Riviera'25", kind: 'Festival website', year: '2025', tags: ['design'],
+      imgs: ['riv_hero.jpg', 'riv_shows.jpg'], teamFigma: 'rMyDgVAhTrMLqZHLsgrgRa',
+      blurb: "VIT's culture fest, with concert-poster energy: a brush-script logo, stage photography and a polaroid wall of past proshows.",
+      did: ['Designed the official website and its design system', 'Hero, about, proshows, team and sponsor sections', 'High-fidelity prototype for handoff'], tools: ['Figma', 'Framer'] },
     { id: 'gravitas', file: 'graVITas 25', title: "graVITas'25", kind: 'Festival website', year: '2025', tags: ['design', 'product'],
       imgs: ['grav25_hero.jpg', 'grav25_events.jpg', 'grav25_team.jpg'], teamFigma: 'Pjdbsdx7uRDf5bb2W9lWPk',
       blurb: "The main website for VIT's flagship tech fest. A dark tech grid with purple and lime accents, built to browse hundreds of events: search, filters, event cards, profiles, team and merch.",
@@ -16,14 +38,6 @@
       imgs: ['wt_hero.jpg'], teamFigma: 'b1d5qeAxUB2zFWetUojmuQ',
       blurb: "'Develop like a Diva.' A hand-drawn hand holding a ticket, quote-mark stickers and a loud violet and orange palette for one of our flagship hackathons.",
       did: ['Hero, about, FAQ, past events and sponsor sections', 'Problem statements page for the hackathon'], tools: ['Figma'] },
-    { id: 'devjams25', file: 'DevJams 25', title: "DevJams'25", kind: 'Hackathon website + portal', year: '2025', tags: ['design', 'product'],
-      imgs: ['dj25_hero.jpg', 'dj25_tracks.jpg', 'dj25_all.jpg'], teamFigma: 'AifNs025vrTd15Qf8MVuBv',
-      blurb: 'The website and participant portal for our flagship hackathon: log in, onboard, create or join a team, pick a track, submit your idea. A black grid in an electric-blue frame, with a pile of stickers that makes forms feel like a party.',
-      did: ['Designed the site and the full participant flow: login, onboarding, teams, dashboard, idea submission', 'A sticker set (LETS HACK, the DJ badge, the dino) reused across every screen'], tools: ['Figma', 'user flows', 'stickers'] },
-    { id: 'riviera', file: 'Riviera 25', title: "Riviera'25", kind: 'Festival website', year: '2025', tags: ['design'],
-      imgs: ['riv_hero.jpg', 'riv_shows.jpg'], teamFigma: 'rMyDgVAhTrMLqZHLsgrgRa',
-      blurb: "VIT's culture fest, with concert-poster energy: a brush-script logo, stage photography and a polaroid wall of past proshows.",
-      did: ['Designed the official website and its design system', 'Hero, about, proshows, team and sponsor sections', 'High-fidelity prototype for handoff'], tools: ['Figma', 'Framer'] },
     { id: 'reflexant', file: 'RefleXant', title: 'RefleXant', kind: 'Website + brand · freelance', year: '2026', tags: ['design', 'product', 'framer'],
       imgs: ['rfx_hero.jpg', 'rfx_loop.jpg', 'rfx_inst.jpg', 'reflxnt.jpg'], figma: 'Dyjmlst7zSaW8zyQXv3dHe',
       framer: 'https://framer.com/projects/Other-Pentagon--KSGl6IT8v4RNlqEajHOa-aU2Mq?node=augiA20Il',
@@ -34,24 +48,10 @@
       framer: 'https://framer.com/projects/EQ-project--qVYihb7aOgCJWLdijoYx-4PYW2?node=QjDzOUfKr',
       blurb: "An agentic finance company that needed to explain autonomous AI agents to business buyers. I turned the founders' goals into a calm, credible landing page: one clear promise, 'Quantifying Excellence', with a live-looking sales chart as proof.",
       did: ['Gathered requirements from the founders and planned the page structure', 'Took it from wireframes to high-fidelity in Figma', 'Built the responsive site in Framer for desktop, tablet and mobile'], tools: ['Figma', 'Framer', 'landing page'] },
-    { id: 'devjams24', file: 'DevJams 24', title: "DevJams'24", kind: 'Hackathon website', year: '2024', tags: ['design'],
-      imgs: ['dj24_center.jpg'], teamFigma: 'lFDcEKdRCs8thOWBh41YOs',
-      blurb: "The hero is the Chrome dino game ('press space to play!'), with a pixel countdown, dino FAQs and a full timeline.",
-      did: ['Branding and website for the hackathon', 'Dino easter eggs and game states', 'Timeline, tracks, sponsors and FAQ sections'], tools: ['Figma', 'branding'] },
     { id: 'hexathon', file: 'Hexathon 26', title: "Hexathon'26", kind: 'Hackathon portal', year: '2026', tags: ['design', 'product'],
       imgs: ['hex_splash.jpg', 'hex_market.jpg', 'hex_home.jpg'], teamFigma: 'SKVZKKZ7WTlaaAjebuaMME',
       blurb: 'A design hackathon where teams spend hexcoins in a marketplace to buy their typeface, palette and illustration style. Indian truck art meets a dashboard.',
       did: ['Designed the team portal: splash, sign in, marketplace, problem statements, submissions', 'Turned the competition rules into a shopping flow with a checkout'], tools: ['Figma', 'product flows', 'illustration'] },
-    { id: 'leadsquared', file: 'LeadSquared', title: 'Test & Explain', kind: 'Product case study', year: '2026', tags: ['product', 'design'],
-      imgs: ['lsq.jpg'], figma: 'k42HtMCC4kBTB9epy9GLn2',
-      links: [{ label: 'Case study', href: 'https://app.notion.com/p/Fewer-Tickets-Faster-Go-Live-Making-LeadSquared-Automations-Self-Serve-3f30c702a953818a93c2ea50172f151e' }],
-      blurb: 'Why do LeadSquared customers keep filing tickets about automations? 50% of reviewers blamed setup and only 22% blamed support, so I designed a check that runs before an automation goes live.',
-      did: ['Read 18 reviews and scored 6 ideas with RICE', 'Wrote the PRD: personas, 7 user stories, success metrics', 'Wireframed impact preview, risk warnings and test runs; caught a workload risk and added round-robin'], tools: ['PRD', 'RICE', 'Figma'] },
-    { id: 'bagsy', file: 'Bagsy', title: 'Bagsy', kind: 'Full-stack web app', year: 'live', tags: ['code', 'design', 'product'],
-      imgs: ['bagsy_hero.jpg', 'bagsy_list.jpg'],
-      links: [{ label: 'Open Bagsy', href: 'https://bagsy-pi.vercel.app/' }, { label: 'GitHub', href: 'https://github.com/radhikakundnani/bagsy' }],
-      blurb: 'A trip planner for people who overpack. Bagsy builds your packing list from the weather on your actual dates, sorts anything you type with a small model trained on 466 items, and keeps your whole crew on one list.',
-      did: ['Designed and built it end to end; live on Vercel', 'Weather-based lists, an item classifier, shared crew lists and an inspo board', 'A 30-second packing mini game, because why not'], tools: ['React', 'Node', 'MongoDB', 'ML'] },
     { id: 'gdg', file: 'Developer Groups', title: 'Google Developer Groups on Campus', kind: 'Design Lead, VIT Vellore', year: '2023–now', tags: ['design', 'product'],
       imgs: ['gdg_events.jpg'], cover: true, teamFigma: 'W2IA17AeBB2hdktUntqhjA',
       blurb: 'Inner core member turned Design Lead. I lead the design team and shape the club’s branding and creative direction, including our three flagship hackathons: DevJams, Hexathon and Women Techies.',
@@ -109,7 +109,7 @@
   let usingKeys = false;
   document.addEventListener('keydown', () => { usingKeys = true; document.documentElement.classList.add('kb'); }, true);
   document.addEventListener('pointerdown', () => { usingKeys = false; document.documentElement.classList.remove('kb'); }, true);
-  const state = { filter: 'all', proj: 'gravitas', shot: 0, cat: 0 };
+  const state = { filter: 'all', proj: 'bagsy', shot: 0, cat: 0 };
 
   const WINS = {
     hello: { title: 'hello.txt', w: 520, h: 330, cls: 'hello', render: () => `
