@@ -68,7 +68,7 @@
       link: { label: 'Read my internship report', href: 'https://app.notion.com/p/n8n-Automation-Projects-Internship-Report-25-2250728d5a27801aad38f58060a58e06' } },
     { when: '2025 – 2026', mark: 'F', tint: 'linear-gradient(160deg,#C4B5FD,#7C5CF0)', role: 'Freelance Product Designer & Developer', org: 'EmberQuant (2025) · RefleXant (2026)',
       pts: ['Gathered requirements from founders and turned brand and conversion goals into structure, wireframes and final designs', 'Built both sites in Framer for desktop, tablet and mobile'] },
-    { when: 'Expected 2027', mark: 'V', tint: 'linear-gradient(160deg,#FCD34D,#F59E0B)', role: 'B.Tech, Computer Science', org: 'Vellore Institute of Technology · CGPA 8.26',
+    { when: 'Expected 2027', mark: 'V', tint: 'linear-gradient(160deg,#FCD34D,#F59E0B)', role: 'B.Tech, Computer Science', org: 'Vellore Institute of Technology',
       pts: ['OCI 2025 Generative AI Professional (Oracle)', 'Google UX Design Certificate, in progress'] }
   ];
 
@@ -217,13 +217,14 @@
         <div><span class="p">~</span> $ <span class="caret"></span></div>
       </div>` },
 
-    mail: { title: 'New message', w: 560, h: 380, cls: 'mail', render: () => `
+    mail: { title: 'New message', w: 560, h: 460, cls: 'mail', render: () => `
       <div class="pane">
         <div class="mrow"><span>To:</span><span id="email">radhikakundnani1@gmail.com</span><button class="copy" data-copy="radhikakundnani1@gmail.com">Copy</button></div>
-        <div class="mrow"><span>Subject:</span><span>let's work together</span></div>
-        <div class="mbody">Hi Radhika,<br><br>I'd love to talk about…</div>
+        <label class="mrow"><span>Subject:</span><input id="m-sub" type="text" value="Let's work together" autocomplete="off"></label>
+        <textarea id="m-body" class="mbody" placeholder="Hi Radhika, I'd love to talk about…"></textarea>
         <div class="mfoot">
-          <a class="lnk" href="mailto:radhikakundnani1@gmail.com?subject=Let's%20work%20together">Send email</a>
+          <button class="send" data-send="gmail">Send with Gmail</button>
+          <button class="lnk" data-send="app">Use my mail app</button>
           <a class="lnk" href="https://www.linkedin.com/in/radhika-kundnani/" ${ext}>LinkedIn ↗</a>
           <a class="lnk" href="https://github.com/radhikakundnani" ${ext}>GitHub ↗</a>
         </div>
@@ -357,6 +358,19 @@
     if (ds.filter) { state.filter = ds.filter; refresh('finder'); return; }
     if (ds.shot) { state.shot = +ds.shot; refresh('case'); return; }
     if (ds.cat) { state.cat = +ds.cat; refresh('skills'); return; }
+    if (ds.send) {
+      const to = 'radhikakundnani1@gmail.com';
+      const su = ($('#m-sub')?.value || '').trim();
+      const body = ($('#m-body')?.value || '').trim();
+      const q = (k, v) => v ? k + '=' + encodeURIComponent(v) : '';
+      if (ds.send === 'gmail') {
+        const url = 'https://mail.google.com/mail/?view=cm&fs=1&to=' + to + '&' + [q('su', su), q('body', body)].filter(Boolean).join('&');
+        window.open(url, '_blank', 'noopener');
+      } else {
+        location.href = 'mailto:' + to + '?' + [q('subject', su), q('body', body)].filter(Boolean).join('&');
+      }
+      return;
+    }
     if (ds.copy) {
       const done = () => { t.textContent = 'Copied'; setTimeout(() => (t.textContent = 'Copy'), 1500); };
       try { navigator.clipboard.writeText(ds.copy).then(done, () => selectText('#email')); } catch (err) { selectText('#email'); }
