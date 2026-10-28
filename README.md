@@ -22,6 +22,7 @@ js/
   data.js             projects, experience and skills (edit content here)
   views.js            the HTML for each window
   window-manager.js   opening, closing, focusing and stacking windows
+  boot.js             the loading screen that writes "radhika"
   desktop.js          desktop folders, phone home screen, clock
   state.js            what's selected right now
   utils.js            small shared helpers

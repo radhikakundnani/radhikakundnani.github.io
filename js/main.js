@@ -5,6 +5,7 @@ import { $, isPhone, reduced, byId, store } from './utils.js';
 import { WINS } from './views.js';
 import { layer, open, refresh, focusWin, openWin, closeWin, topOpen, openProject } from './window-manager.js';
 import { renderFolders, tick } from './desktop.js';
+import { playBoot } from './boot.js';
 
 /* ---------- clicks ---------- */
 document.addEventListener('click', (e) => {
@@ -88,18 +89,20 @@ renderFolders();
 tick();
 setInterval(tick, 15000);
 
-// Play the boot screen once per visit; deep links like #bagsy open that project.
+// Deep links like #bagsy open that project.
 const fromHash = (location.hash || '').slice(1);
 const booted = store.get('booted');
-if (booted) $('#boot')?.classList.add('skip');
 store.set('booted', '1');
-const delay = booted || reduced ? 0 : 3000;
 
-setTimeout(() => {
+function showDesktop() {
   if (fromHash && byId(fromHash)) { openWin('finder'); openProject(fromHash); }
   else if (WINS[fromHash]) openWin(fromHash);
   else if (!isPhone()) openWin('hello');
-}, delay);
+}
+
+// The loading screen plays once per visit, and never on phones.
+if (booted || isPhone()) { $('#boot')?.classList.add('skip'); showDesktop(); }
+else playBoot(showDesktop);
 
 // Keep windows on screen when the browser is resized.
 window.addEventListener('resize', () => {
