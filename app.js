@@ -100,7 +100,7 @@
   ];
   const ext = 'target="_blank" rel="noopener"';
 
-  const FOLDER_SVG = '<svg width="72" height="58" viewBox="0 0 72 58" aria-hidden="true"><path d="M5 10.5A4.5 4.5 0 0 1 9.5 6h15.2a4.5 4.5 0 0 1 3.4 1.5l2.6 3H62.5A4.5 4.5 0 0 1 67 15v8H5z" fill="#55A8EC"/><path d="M5 18.5A4.5 4.5 0 0 1 9.5 14h53A4.5 4.5 0 0 1 67 18.5v30a4.5 4.5 0 0 1-4.5 4.5h-53A4.5 4.5 0 0 1 5 48.5z" fill="#86CAF9"/><path d="M9.5 14.75h53a3.75 3.75 0 0 1 3.75 3.75M5.75 18.5A3.75 3.75 0 0 1 9.5 14.75" fill="none" stroke="#D6EEFE" stroke-width="1.5" stroke-linecap="round"/><path d="M5.6 48.5a3.9 3.9 0 0 0 3.9 3.9h53a3.9 3.9 0 0 0 3.9-3.9" fill="none" stroke="#4FA3E6" stroke-opacity=".55"/></svg>';
+  const FOLDER_SVG = '<svg width="72" height="58" viewBox="0 0 72 58" aria-hidden="true"><defs><linearGradient id="fgF" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#7FC6FB"/><stop offset="1" stop-color="#69B6F2"/></linearGradient></defs><path d="M6 10a4 4 0 0 1 4-4h14.3a4 4 0 0 1 2.9 1.25L30 10.2h32a4 4 0 0 1 4 4V22H6z" fill="#5CADEE"/><rect x="6" y="13.5" width="60" height="39.5" rx="4" fill="url(#fgF)"/><path d="M10 14.25h52a3.25 3.25 0 0 1 3.25 3.25M6.75 17.5A3.25 3.25 0 0 1 10 14.25" fill="none" stroke="#B4E0FF" stroke-width="1.2" stroke-linecap="round" opacity=".9"/><path d="M8.5 46.5h55" stroke="#5DA9E6" stroke-width="1" opacity=".55"/></svg>';
   const X = '<svg viewBox="0 0 8 8"><path d="M1.5 1.5l5 5M6.5 1.5l-5 5" stroke="#000" stroke-width="1.2" stroke-linecap="round"/></svg>';
   const MIN = '<svg viewBox="0 0 8 8"><path d="M1.5 4h5" stroke="#000" stroke-width="1.2" stroke-linecap="round"/></svg>';
   const ZOOM = '<svg viewBox="0 0 8 8"><path d="M2 6V2h4M6 2v4H2" stroke="#000" stroke-width="1.1" fill="none" stroke-linecap="round"/></svg>';
