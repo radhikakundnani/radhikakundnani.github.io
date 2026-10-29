@@ -20,7 +20,7 @@ export function setupScene() {
   scrollTo(0, 0);
 
   const layers = LAYERS.map((l) => ({ ...l, el: $(l.sel) }));
-  const lift = ['#desktop', '#layer', '#dock', '.c1', '.c2', '.more'].map((s) => $(s)).filter(Boolean);
+  const lift = ['#desktop', '#layer', '#dock', '.more'].map((s) => $(s)).filter(Boolean);
   const footer = $('#footer');
   const sign = $('#footer-sign');
   let progress = 0, shown = 0, mouse = { x: 0, y: 0 }, eased = { x: 0, y: 0 }, signed = false, frame = 0, last = 0;
