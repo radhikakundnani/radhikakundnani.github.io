@@ -3,9 +3,9 @@
 import { $, reduced } from './utils.js';
 
 // Hand-drawn letter strokes for "radhika" (r, a, d, h, i, i-dot, k, a).
-const VIEWBOX = '0 0 934 200';
-const SLANT = 'translate(48 0) skewX(-12)';
-const STROKES = [
+export const VIEWBOX = '0 0 934 200';
+export const SLANT = 'translate(48 0) skewX(-12)';
+export const STROKES = [
   "M8 180 C26 162 40 134 46 104 C50 84 74 84 76 106 C74 130 70 168 82 186 C92 198 110 190 122 172",
   "M122 172 C134 138 152 98 176 93 C194 90 210 94 218 104 C206 90 168 92 160 122 C152 152 164 190 188 190 C210 190 220 160 224 104 C222 140 218 176 230 188 C240 196 254 188 264 172",
   "M264 172 C276 138 294 98 318 93 C336 90 352 94 360 104 C348 90 310 92 302 122 C294 152 306 190 330 190 C352 190 362 160 366 104 C370 70 374 30 376 8 C374 50 362 150 364 174 C366 192 384 194 402 178",
@@ -58,5 +58,25 @@ export function playBoot(onDone) {
   }
 
   if (reduced) { paths.forEach((p) => (p.style.strokeDashoffset = 0)); finish(); return; }
+  requestAnimationFrame(frame);
+}
+
+// Draw "radhika" into any <svg>, stroke by stroke. Used again in the footer.
+export function writeName(svg, ms = 2600) {
+  svg.setAttribute('viewBox', VIEWBOX);
+  svg.innerHTML = `<g transform="${SLANT}">${STROKES.map((d) => `<path d="${d}"/>`).join('')}</g>`;
+  const paths = [...svg.querySelectorAll('path')];
+  const lengths = paths.map((p) => p.getTotalLength() + 1);
+  const total = lengths.reduce((a, b) => a + b, 0);
+  paths.forEach((p, i) => { p.style.strokeDasharray = lengths[i]; p.style.strokeDashoffset = reduced ? 0 : lengths[i]; });
+  if (reduced) return;
+  let at = 0;
+  const plan = lengths.map((len) => { const dur = Math.max(90, (len / total) * ms); const s = at; at += dur * 0.92; return { s, dur }; });
+  const t0 = performance.now();
+  const frame = (now) => {
+    const t = now - t0;
+    paths.forEach((p, i) => { const k = Math.min(1, Math.max(0, (t - plan[i].s) / plan[i].dur)); p.style.strokeDashoffset = lengths[i] * (1 - easeInOut(k)); });
+    if (t < at + 200) requestAnimationFrame(frame);
+  };
   requestAnimationFrame(frame);
 }

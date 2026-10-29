@@ -7,13 +7,15 @@ import { layer, open, refresh, focusWin, openWin, closeWin, topOpen, openProject
 import { renderFolders, tick } from './desktop.js';
 import { playBoot } from './boot.js';
 import { setupJiggle } from './jiggle.js';
+import { setupScene, toDesktop, tickFooterClock } from './scene.js';
 
 /* ---------- clicks ---------- */
 document.addEventListener('click', (e) => {
   const t = e.target.closest('button, a');
   if (!t) return;
   const ds = t.dataset;
-  if (ds.open) { openWin(ds.open); return; }
+  if (ds.top !== undefined) { toDesktop(); return; }
+  if (ds.open) { toDesktop(); openWin(ds.open); return; }
   if (ds.proj) { openProject(ds.proj); return; }
   if (ds.close) { closeWin(ds.close); return; }
   if (ds.min) { open.get(ds.min)?.classList.add('min'); return; }
@@ -88,6 +90,9 @@ document.addEventListener('keydown', (e) => {
 /* ---------- start ---------- */
 renderFolders();
 setupJiggle();
+setupScene();
+tickFooterClock();
+setInterval(tickFooterClock, 15000);
 tick();
 setInterval(tick, 15000);
 

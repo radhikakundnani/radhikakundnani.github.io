@@ -9,7 +9,7 @@
 }
 *{box-sizing:border-box}
 html,body{height:100%}
-body{margin:0;background:#DCE3E6;color:var(--ink);font-family:var(--font);-webkit-font-smoothing:antialiased;overflow:hidden}
+body{margin:0;background:#DCE3E6;color:var(--ink);font-family:var(--font);-webkit-font-smoothing:antialiased;overflow-x:hidden}
 button{font:inherit;color:inherit}
 a{color:var(--link)}
 img{max-width:100%}
@@ -38,7 +38,34 @@ img{max-width:100%}
 @keyframes appear{from{opacity:0}to{opacity:1}}
 
 /* ---------- screen ---------- */
-#screen{position:fixed;inset:0;overflow:hidden}
+#screen{position:fixed;inset:0;overflow:hidden;background:#DCE3E6}
+#scroll-room{height:175vh}
+/* landscape layers */
+#scene{position:absolute;inset:0;overflow:hidden;z-index:0}
+.sc{position:absolute;display:block;max-width:none;height:auto;will-change:transform;user-select:none;-webkit-user-drag:none}
+.sc-sky{z-index:0}.sc-land{z-index:1}.sc-near{z-index:2}
+.pane,.grid,.info,.skillpane{overscroll-behavior:contain}
+/* scroll hint */
+.more{position:absolute;right:22px;bottom:26px;z-index:8;display:flex;align-items:center;gap:6px;font:600 12px/1 var(--font);color:rgba(255,255,255,.92);text-shadow:0 1px 3px rgba(0,0,0,.35);padding:7px 11px;border-radius:999px;background:rgba(255,255,255,.14);backdrop-filter:blur(14px);-webkit-backdrop-filter:blur(14px);transition:opacity .3s}
+.more svg{animation:nudgeDown 1.6s ease-in-out infinite}
+@keyframes nudgeDown{50%{transform:translateY(2px)}}
+/* footer */
+#footer{position:absolute;left:0;right:0;bottom:0;z-index:30;padding:0 max(24px,env(safe-area-inset-right)) max(24px,env(safe-area-inset-bottom)) max(24px,env(safe-area-inset-left));transform:translate3d(0,110%,0);visibility:hidden;will-change:transform}
+.ft-card{max-width:1120px;margin:0 auto;border-radius:28px;padding:30px 34px 20px;background:rgba(250,250,252,.62);backdrop-filter:blur(30px) saturate(180%);-webkit-backdrop-filter:blur(30px) saturate(180%);box-shadow:inset 0 1px 0 rgba(255,255,255,.9),0 0 0 .5px rgba(0,0,0,.08),0 30px 60px -30px rgba(20,30,15,.55);display:flex;flex-direction:column;gap:22px}
+.ft-top{display:flex;align-items:center;justify-content:space-between;gap:28px;flex-wrap:wrap}
+.ft-sign{width:min(420px,100%);height:auto;overflow:visible}
+.ft-sign path{fill:none;stroke:var(--ink);stroke-width:15;stroke-linecap:round;stroke-linejoin:round}
+.ft-cta{display:flex;flex-direction:column;gap:14px;align-items:flex-start;min-width:0}
+.ft-line{margin:0;font-size:22px;font-weight:700;letter-spacing:-.02em;text-wrap:balance}
+.ft-btns{display:flex;gap:8px;flex-wrap:wrap}
+.ft-btn{border:0;cursor:pointer;font:600 14px/1 var(--font);color:var(--ink);text-decoration:none;padding:11px 16px;border-radius:999px;background:rgba(0,0,0,.06)}
+.ft-btn:hover{background:rgba(0,0,0,.1)}
+.ft-btn.prim{color:#fff;background:var(--blue);box-shadow:0 6px 14px -6px rgba(10,132,255,.7)}
+.ft-bottom{display:flex;align-items:center;gap:10px 22px;flex-wrap:wrap;padding-top:16px;border-top:.5px solid rgba(0,0,0,.1);font-size:12.5px;color:var(--muted)}
+.ft-status{display:flex;align-items:center;gap:7px;color:var(--ink2);font-weight:500}
+.ft-status i{width:7px;height:7px;border-radius:50%;background:#28C840;box-shadow:0 0 0 3px rgba(40,200,64,.18)}
+.ft-mono{font:400 11.5px var(--mono)}
+.ft-top-btn{margin-left:auto;border:0;background:transparent;cursor:pointer;font:600 12.5px var(--font);color:var(--link);padding:6px 0}
 
 /* menu bar */
 #menubar{position:absolute;inset:0 0 auto;height:32px;display:flex;align-items:center;gap:4px;padding:0 12px;background:rgba(246,246,248,.55);backdrop-filter:blur(24px) saturate(180%);-webkit-backdrop-filter:blur(24px) saturate(180%);box-shadow:inset 0 -.5px 0 rgba(0,0,0,.1);z-index:900;font-size:13px}
@@ -254,6 +281,13 @@ button.lnk{background:none;border-top:0;border-left:0;border-right:0;cursor:poin
 /* ---------- phones and small tablets ---------- */
 @media (max-width:820px){
   body{overflow:auto}
+  #scroll-room,.more{display:none}
+  #screen{background:#DCE3E6 url(../assets/ui/wall_hills.jpg) center/cover no-repeat}
+  #scene{display:none}
+  #footer{position:static;transform:none!important;visibility:visible!important;padding:0}
+  .ft-card{padding:22px 20px 16px;border-radius:24px}
+  .ft-line{font-size:18px}
+  .ft-top-btn{display:none}
   .status .open-roles,.status svg,.notch,.menus .mb:not(.strong){display:none}
   #desktop,.cur,.desk-only{display:none!important}
   #layer{z-index:990}

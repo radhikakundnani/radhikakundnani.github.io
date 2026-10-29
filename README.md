@@ -25,11 +25,13 @@ js/
   boot.js             the loading screen that writes "radhika"
   desktop.js          desktop folders, phone home screen, clock
   jiggle.js           press and hold an icon on a phone to make them wiggle
+  scene.js            the layered hills: parallax on scroll and mouse, plus the footer
   state.js            what's selected right now
   utils.js            small shared helpers
   icons.js            inline SVG icons
 assets/
   projects/           project screenshots
+  scene/              the wallpaper split into sky, far hills and near hills
   ui/                 wallpaper, logo, preview
 ```
 
