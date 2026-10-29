@@ -33,7 +33,7 @@ assets/
   projects/           project screenshots
   scene/              the wallpaper split into sky, far hills and near hills
   ui/                 wallpaper, logo, preview, icons
-favicon.svg / .ico    my "rak" monogram
+favicon.svg / .ico    my r monogram
 ```
 
 No frameworks or build step. The JavaScript is split into ES modules that the browser loads directly.
