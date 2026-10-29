@@ -6,6 +6,7 @@ import { WINS } from './views.js';
 import { layer, open, refresh, focusWin, openWin, closeWin, topOpen, openProject } from './window-manager.js';
 import { renderFolders, tick } from './desktop.js';
 import { playBoot } from './boot.js';
+import { setupJiggle } from './jiggle.js';
 
 /* ---------- clicks ---------- */
 document.addEventListener('click', (e) => {
@@ -86,6 +87,7 @@ document.addEventListener('keydown', (e) => {
 
 /* ---------- start ---------- */
 renderFolders();
+setupJiggle();
 tick();
 setInterval(tick, 15000);
 
@@ -100,8 +102,8 @@ function showDesktop() {
   else if (!isPhone()) openWin('hello');
 }
 
-// The loading screen plays once per visit, and never on phones.
-if (booted || isPhone()) { $('#boot')?.classList.add('skip'); showDesktop(); }
+// The loading screen plays once per visit.
+if (booted) { $('#boot')?.classList.add('skip'); showDesktop(); }
 else playBoot(showDesktop);
 
 // Keep windows on screen when the browser is resized.
